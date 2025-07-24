@@ -246,7 +246,7 @@ interface TransactionServiceInterface {
      * @param string $trace_id
      * @return array
      */
-    function queryOrder(string $account_with_op, string $delimiter, string $trace_id): array;
+    function queryOrder(string $account_with_op, string $delimiter, string $trace_id, string $wallet_code): array;
 
     /**
      * 幣值換算
