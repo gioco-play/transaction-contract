@@ -244,9 +244,10 @@ interface TransactionServiceInterface {
      * @param string $account_with_op
      * @param string $delimiter
      * @param string $trace_id
+     * @param string|null $wallet_code 選填，錢包代碼
      * @return array
      */
-    function queryOrder(string $account_with_op, string $delimiter, string $trace_id, string $wallet_code): array;
+    function queryOrder(string $account_with_op, string $delimiter, string $trace_id, string $wallet_code = null): array;
 
     /**
      * 幣值換算
