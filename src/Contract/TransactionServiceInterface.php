@@ -250,6 +250,21 @@ interface TransactionServiceInterface {
     function queryOrder(string $account_with_op, string $delimiter, string $trace_id, string $wallet_code = null): array;
 
     /**
+     * 依 traceId 前綴的日期資訊查詢對應的分區交易紀錄
+     *
+     * 與 queryOrder 的差異在於本函式會先從 traceId 解析出 ISO 週數，
+     * 並據此決定要查詢的 partitioned table（例如 transactions_202301），
+     * 若無法解析則 fallback 至預設的 transactions 表。
+     *
+     * @param string      $account_with_op
+     * @param string      $delimiter
+     * @param string      $trace_id        交易唯一識別碼
+     *
+     * @return array ApiResponse 格式的陣列，包含交易資料或對應的錯誤狀態碼
+     */
+    function queryOrderPartition(string $account_with_op, string $delimiter, string $trace_id): array;
+
+    /**
      * 幣值換算
      * @param string $account_with_op
      * @param string $delimiter
